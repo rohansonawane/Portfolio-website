@@ -4,11 +4,26 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from 'react-icons/ci';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const MobileNav = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  // Save scroll position when menu opens
+  useEffect(() => {
+    if (open) {
+      setScrollPosition(window.scrollY);
+    }
+  }, [open]);
+
+  // Restore scroll position when menu closes
+  useEffect(() => {
+    if (!open) {
+      window.scrollTo(0, scrollPosition);
+    }
+  }, [open, scrollPosition]);
 
   const navLinks = [
     { href: "#home", label: "Home" },
