@@ -1,6 +1,10 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
+    "react/jsx-key": ["error", {
+      "checkFragmentShorthand": true,
+      "checkKeyMustBeforeSpread": true
+    }],
     "react/no-unescaped-entities": "off",
     "@typescript-eslint/quotes": "off",
     "quotes": [0],
