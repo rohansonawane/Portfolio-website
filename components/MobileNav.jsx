@@ -18,24 +18,11 @@ const MobileNav = () => {
     { href: "#contact", label: "Contact" },
   ];
 
-  const handleLinkClick = (e, href) => {
-    e.preventDefault();
+  const handleLinkClick = (href) => {
     const element = document.getElementById(href.substring(1));
     if (element) {
-      // Get the element's position relative to the viewport
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - 80; // 80px offset for header
-
-      // Smooth scroll to the element
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-      
-      // Close menu after scroll animation completes
-      setTimeout(() => {
-        setOpen(false);
-      }, 800); // Wait for scroll animation to complete
+      element.scrollIntoView({ behavior: "smooth" });
+      setOpen(false);
     }
   };
 
@@ -58,7 +45,7 @@ const MobileNav = () => {
           {navLinks.map((link) => (
             <button
               key={link.href}
-              onClick={(e) => handleLinkClick(e, link.href)}
+              onClick={() => handleLinkClick(link.href)}
               className={`text-sm font-medium ${
                 pathname === link.href
                   ? "text-accent"
