@@ -12,14 +12,18 @@ const SkillsSection = ({ skills }) => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {skills.skilllist.map((skill, index) => (
           <motion.div
-            key={index}
+            key={`skill-${index}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             className="flex flex-col items-center xl:items-start gap-2 bg-white/5 p-4 rounded-lg hover:bg-white/10 transition-colors duration-300"
           >
-            <div className="text-2xl text-accent">{skill.icon}</div>
-            <span className="text-white/80">{skill.name}</span>
+            <div key={`skill-icon-${index}`} className="text-2xl text-accent">
+              {skill.icon}
+            </div>
+            <span key={`skill-name-${index}`} className="text-white/80">
+              {skill.name}
+            </span>
           </motion.div>
         ))}
       </div>
