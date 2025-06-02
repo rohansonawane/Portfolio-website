@@ -121,22 +121,28 @@ const ProjectCard = ({ project }) => {
         <p className="text-white/60 mb-4">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map((tag, index) => (
-            <span
-              key={index}
+            <motion.span
+              key={`tag-${index}`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
               className="px-3 py-1 text-sm bg-accent/10 text-accent rounded-full"
             >
               {tag}
-            </span>
+            </motion.span>
           ))}
         </div>
         <div className="flex flex-wrap gap-2">
           {project.skills.map((skill, index) => (
-            <span
-              key={index}
+            <motion.span
+              key={`skill-${index}`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
               className="px-3 py-1 text-sm bg-white/5 text-white/80 rounded-full"
             >
               {skill}
-            </span>
+            </motion.span>
           ))}
         </div>
         <div className="flex gap-4 mt-6">
