@@ -14,421 +14,240 @@ import {
   SiTailwindcss, SiNextdotjs, SiAngular, SiFlask, SiDjango, SiExpress, 
   SiBootstrap as SiBootstrapIcon, SiUnity, SiBlender, SiGo 
 } from 'react-icons/si';
-import { useState } from "react";
-import { cn } from "@/lib/utils";
 
 const skills = [
-  { 
-    name: "Python", 
-    icon: FaPython, 
-    category: "Languages",
-    description: "Advanced Python programming with focus on data science and web development",
-    tags: ["Data Science", "Web Development", "Automation"]
-  },
-  { 
-    name: "Go", 
-    icon: SiGo, 
-    category: "Languages",
-    description: "High-performance systems programming and microservices",
-    tags: ["Backend", "Microservices", "Performance"]
-  },
-  { 
-    name: "JavaScript", 
-    icon: FaJs, 
-    category: "Languages",
-    description: "Modern JavaScript development with ES6+ features",
-    tags: ["Frontend", "Backend", "Full Stack"]
-  },
-  { 
-    name: "TypeScript", 
-    icon: SiTypescript, 
-    category: "Languages",
-    description: "Type-safe JavaScript development for robust applications",
-    tags: ["Type Safety", "Frontend", "Backend"]
-  },
-  { 
-    name: "PHP", 
-    icon: FaPhp, 
-    category: "Languages",
-    description: "Server-side scripting language for web development",
-    tags: ["Backend", "Web Development"]
-  },
-  { 
-    name: "Java", 
-    icon: FaJava, 
-    category: "Languages",
-    description: "Object-oriented programming language for robust applications",
-    tags: ["Backend", "Full Stack"]
-  },
-  { 
-    name: "C++", 
-    icon: SiCplusplus, 
-    category: "Languages",
-    description: "General-purpose programming language with a bias towards system programming",
-    tags: ["Backend", "System Programming"]
-  },
-  { 
-    name: "C#", 
-    icon: SiDotnet, 
-    category: "Languages",
-    description: "Object-oriented programming language for robust applications",
-    tags: ["Backend", "Full Stack"]
-  },
-  { 
-    name: "React", 
-    icon: FaReact, 
-    category: "Frameworks",
-    description: "Building modern, responsive user interfaces",
-    tags: ["Frontend", "UI/UX", "SPA"]
-  },
-  { 
-    name: "Next.js", 
-    icon: SiNextdotjs, 
-    category: "Frameworks",
-    description: "Full-stack React framework for production applications",
-    tags: ["SSR", "SSG", "Full Stack"]
-  },
-  { 
-    name: "Angular", 
-    icon: SiAngular, 
-    category: "Frameworks",
-    description: "TypeScript-based web application framework",
-    tags: ["Frontend", "Full Stack"]
-  },
-  { 
-    name: "Flask", 
-    icon: SiFlask, 
-    category: "Frameworks",
-    description: "Micro web framework for Python",
-    tags: ["Backend", "Microservices"]
-  },
-  { 
-    name: "Django", 
-    icon: SiDjango, 
-    category: "Frameworks",
-    description: "Python-based web framework",
-    tags: ["Backend", "Full Stack"]
-  },
-  { 
-    name: "Express.js", 
-    icon: SiExpress, 
-    category: "Frameworks",
-    description: "Fast, unopinionated, minimalist web framework for Node.js",
-    tags: ["Backend", "API"]
-  },
-  { 
-    name: "Node.js", 
-    icon: FaNodeJs, 
-    category: "Frameworks",
-    description: "Server-side JavaScript runtime for scalable applications",
-    tags: ["Backend", "API", "Microservices"]
-  },
-  { 
-    name: "AWS", 
-    icon: FaAws, 
-    category: "Cloud",
-    description: "Cloud infrastructure and services management",
-    tags: ["DevOps", "Cloud", "Infrastructure"]
-  },
-  { 
-    name: "Docker", 
-    icon: FaDocker, 
-    category: "Cloud",
-    description: "Containerization and microservices deployment",
-    tags: ["DevOps", "Containers", "Deployment"]
-  },
-  { 
-    name: "Kubernetes", 
-    icon: SiKubernetes, 
-    category: "Cloud",
-    description: "Container orchestration platform",
-    tags: ["DevOps", "Cloud", "Infrastructure"]
-  },
-  { 
-    name: "Terraform", 
-    icon: SiTerraform, 
-    category: "Cloud",
-    description: "Infrastructure as Code tool for provisioning and managing infrastructure",
-    tags: ["DevOps", "Cloud", "Infrastructure"]
-  },
-  { 
-    name: "Jenkins", 
-    icon: SiJenkins, 
-    category: "Cloud",
-    description: "Open-source automation server for continuous integration",
-    tags: ["DevOps", "CI/CD"]
-  },
-  { 
-    name: "TensorFlow", 
-    icon: SiTensorflow, 
-    category: "AI/ML",
-    description: "Machine learning and deep learning applications",
-    tags: ["AI", "ML", "Deep Learning"]
-  },
-  { 
-    name: "PyTorch", 
-    icon: SiPytorch, 
-    category: "AI/ML",
-    description: "Open source machine learning library",
-    tags: ["AI", "ML"]
-  },
-  { 
-    name: "scikit-learn", 
-    icon: SiScikitlearn, 
-    category: "AI/ML",
-    description: "Machine learning library for Python",
-    tags: ["AI", "ML"]
-  },
-  { 
-    name: "OpenAI", 
-    icon: SiOpenai, 
-    category: "AI/ML",
-    description: "Artificial intelligence research company",
-    tags: ["AI"]
-  },
-  { 
-    name: "GraphQL", 
-    icon: SiGraphql, 
-    category: "Tools",
-    description: "Query language for APIs and a runtime for fulfilling those queries",
-    tags: ["API", "Graph"]
-  },
-  { 
-    name: "Figma", 
-    icon: SiFigma, 
-    category: "Tools",
-    description: "Collaborative design tool",
-    tags: ["UI/UX", "Design"]
-  },
-  { 
-    name: "Git", 
-    icon: FaGitAlt, 
-    category: "Tools",
-    description: "Distributed version control system",
-    tags: ["Version Control", "Code Management"]
-  },
-  { 
-    name: "Unity", 
-    icon: SiUnity, 
-    category: "Tools",
-    description: "Game development platform",
-    tags: ["Game Development", "3D"]
-  },
-  { 
-    name: "Blender", 
-    icon: SiBlender, 
-    category: "Tools",
-    description: "Free and open-source 3D computer graphics software",
-    tags: ["3D", "Modeling"]
-  },
-  { 
-    name: "MySQL", 
-    icon: SiMysql, 
-    category: "Database",
-    description: "Relational database management system",
-    tags: ["Database", "SQL"]
-  },
-  { 
-    name: "PostgreSQL", 
-    icon: SiPostgresql, 
-    category: "Database",
-    description: "Advanced relational database management system",
-    tags: ["Database", "SQL"]
-  },
-  { 
-    name: "MongoDB", 
-    icon: SiMongodb, 
-    category: "Database",
-    description: "NoSQL database for scalable applications",
-    tags: ["Database", "NoSQL", "Scalability"]
-  },
-  { 
-    name: "Redis", 
-    icon: SiRedis, 
-    category: "Database",
-    description: "In-memory data structure store",
-    tags: ["Database", "In-memory"]
-  },
-  { 
-    name: "Power BI", 
-    icon: FaChartLine, 
-    category: "Tools",
-    description: "Business analytics service",
-    tags: ["BI", "Data Analysis"]
-  },
-  { 
-    name: "Laravel", 
-    icon: FaLaravel, 
-    category: "Backend",
-    description: "PHP web framework for building robust applications",
-    tags: ["Backend", "Full Stack"]
-  },
-  { 
-    name: "Vue.js", 
-    icon: FaVuejs, 
-    category: "Frontend",
-    description: "Progressive JavaScript framework for building user interfaces",
-    tags: ["Frontend", "UI/UX"]
-  },
-  { 
-    name: "Sass", 
-    icon: FaSass, 
-    category: "Frontend",
-    description: "CSS preprocessor",
-    tags: ["CSS", "Preprocessor"]
-  },
-  { 
-    name: "Less", 
-    icon: FaLess, 
-    category: "Frontend",
-    description: "CSS preprocessor",
-    tags: ["CSS", "Preprocessor"]
-  },
-  { 
-    name: "Bootstrap", 
-    icon: FaBootstrap, 
-    category: "Frontend",
-    description: "Front-end framework for developing responsive, mobile-first projects",
-    tags: ["Frontend", "Responsive"]
-  },
-  { 
-    name: "WordPress", 
-    icon: FaWordpress, 
-    category: "CMS",
-    description: "Content management system",
-    tags: ["CMS"]
-  },
-  { 
-    name: "Shopify", 
-    icon: FaShopify, 
-    category: "E-commerce",
-    description: "E-commerce platform",
-    tags: ["E-commerce"]
-  }
+  { name: "Python", icon: FaPython, category: "Languages" },
+  { name: "Go", icon: SiGo, category: "Languages" },
+  { name: "JavaScript", icon: FaJs, category: "Languages" },
+  { name: "TypeScript", icon: SiTypescript, category: "Languages" },
+  { name: "PHP", icon: FaPhp, category: "Languages" },
+  { name: "Java", icon: FaJava, category: "Languages" },
+  { name: "C++", icon: SiCplusplus, category: "Languages" },
+  { name: "C#", icon: SiDotnet, category: "Languages" },
+  { name: "React", icon: FaReact, category: "Frameworks" },
+  { name: "Next.js", icon: SiNextdotjs, category: "Frameworks" },
+  { name: "Angular", icon: SiAngular, category: "Frameworks" },
+  { name: "Flask", icon: SiFlask, category: "Frameworks" },
+  { name: "Django", icon: SiDjango, category: "Frameworks" },
+  { name: "Express.js", icon: SiExpress, category: "Frameworks" },
+  { name: "Node.js", icon: FaNodeJs, category: "Frameworks" },
+  { name: "AWS", icon: FaAws, category: "Cloud" },
+  { name: "Docker", icon: FaDocker, category: "Cloud" },
+  { name: "Kubernetes", icon: SiKubernetes, category: "Cloud" },
+  { name: "Terraform", icon: SiTerraform, category: "Cloud" },
+  { name: "Jenkins", icon: SiJenkins, category: "Cloud" },
+  { name: "TensorFlow", icon: SiTensorflow, category: "AI/ML" },
+  { name: "PyTorch", icon: SiPytorch, category: "AI/ML" },
+  { name: "scikit-learn", icon: SiScikitlearn, category: "AI/ML" },
+  { name: "OpenAI", icon: SiOpenai, category: "AI/ML" },
+  { name: "GraphQL", icon: SiGraphql, category: "Tools" },
+  { name: "Figma", icon: SiFigma, category: "Tools" },
+  { name: "Git", icon: FaGitAlt, category: "Tools" },
+  { name: "Unity", icon: SiUnity, category: "Tools" },
+  { name: "Blender", icon: SiBlender, category: "Tools" },
+  { name: "MySQL", icon: SiMysql, category: "Database" },
+  { name: "PostgreSQL", icon: SiPostgresql, category: "Database" },
+  { name: "MongoDB", icon: SiMongodb, category: "Database" },
+  { name: "Redis", icon: SiRedis, category: "Database" },
+  { name: "Power BI", icon: FaChartLine, category: "Tools" },
+  { name: "Laravel", icon: FaLaravel, category: "Backend" },
+  { name: "Vue.js", icon: FaVuejs, category: "Frontend" },
+  { name: "Sass", icon: FaSass, category: "Frontend" },
+  { name: "Less", icon: FaLess, category: "Frontend" },
+  { name: "Bootstrap", icon: FaBootstrap, category: "Frontend" },
+  { name: "WordPress", icon: FaWordpress, category: "CMS" },
+  { name: "Shopify", icon: FaShopify, category: "E-commerce" }
 ];
 
 const HoneycombSkills = () => {
-  const [activeSkill, setActiveSkill] = useState(null);
+  // Calculate rows with 9 and 8 elements alternating
+  const calculateRowLayout = () => {
+    const layout = [];
+    let remainingSkills = [...skills];
+    let isEvenRow = true;
+
+    while (remainingSkills.length > 0) {
+      const elementsInRow = isEvenRow ? 9 : 8;
+      const rowSkills = remainingSkills.splice(0, elementsInRow);
+      layout.push({
+        skills: rowSkills,
+        isEvenRow,
+        isLastRow: remainingSkills.length === 0
+      });
+      isEvenRow = !isEvenRow;
+    }
+
+    return layout;
+  };
+
+  const rowLayout = calculateRowLayout();
 
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden">
-      {/* Title Section - Always visible */}
-      <div className="container mx-auto px-4 mb-12">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold text-center mb-4"
-        >
+    <div className="relative w-full py-8">
+      {/* Heading and Description - Hidden on mobile */}
+      <div className="text-center mb-12 hidden md:block">
+        <h2 className="text-4xl font-bold mb-4 text-white">
           Skills & Expertise
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="text-gray-600 dark:text-gray-400 text-center max-w-2xl mx-auto"
-        >
-          A comprehensive collection of technical skills and tools I've mastered throughout my journey
-        </motion.p>
+        </h2>
+        <p className="text-lg text-white/60 max-w-2xl mx-auto">
+          A comprehensive overview of my technical skills and areas of expertise, showcasing my ability to work across various technologies and domains.
+        </p>
       </div>
 
-      {/* Skills Grid - Scrollable on mobile */}
-      <div className="container mx-auto px-4">
-        <div className="relative">
-          {/* Mobile scroll container */}
-          <div className="md:hidden overflow-x-auto pb-4 -mx-4 px-4">
-            <div className="flex gap-4 min-w-max">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex-shrink-0 w-[280px]"
-                >
-                  <div
-                    className={cn(
-                      "relative group cursor-pointer transition-all duration-300",
-                      "bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg",
-                      "hover:shadow-xl hover:-translate-y-1",
-                      "border border-gray-200 dark:border-gray-700"
-                    )}
-                    onMouseEnter={() => setActiveSkill(skill)}
-                    onMouseLeave={() => setActiveSkill(null)}
-                  >
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
-                        <skill.icon className="w-6 h-6 text-primary" />
-                      </div>
-                      <h3 className="text-lg font-semibold">{skill.name}</h3>
-                    </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {skill.description}
-                    </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {skill.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+      {/* Enhanced fade effect on sides - Hidden on mobile */}
+      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background via-background/95 to-transparent z-10 hidden md:block"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background/95 to-transparent z-10 hidden md:block"></div>
 
-          {/* Desktop grid */}
-          <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+      {/* Honeycomb grid container */}
+      <div className="relative w-full px-4 md:px-8">
+        <div className="flex flex-col items-center w-full" style={{ gap: '0' }}>
+          {rowLayout.map((row, rowIndex) => (
+            <div 
+              key={rowIndex}
+              className="flex justify-center w-full"
+              style={{
+                marginTop: rowIndex === 0 ? '0' : '-1.5rem',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center'
+              }}
+            >
+              <div
+                className="flex justify-center"
+                style={{
+                  marginLeft: row.isEvenRow ? '0' : '-0.25rem',
+                  gap: '0',
+                  width: '100%',
+                  maxWidth: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
               >
                 <div
-                  className={cn(
-                    "relative group cursor-pointer transition-all duration-300",
-                    "bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg",
-                    "hover:shadow-xl hover:-translate-y-1",
-                    "border border-gray-200 dark:border-gray-700"
-                  )}
-                  onMouseEnter={() => setActiveSkill(skill)}
-                  onMouseLeave={() => setActiveSkill(null)}
+                  className="flex justify-center"
+                  style={{
+                    gap: '0',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginLeft: row.isLastRow && !row.isEvenRow ? '-0.25rem' : '0'
+                  }}
                 >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
-                      <skill.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <h3 className="text-lg font-semibold">{skill.name}</h3>
-                  </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {skill.description}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {skill.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  {row.skills.map((skill, index) => (
+                    <motion.div
+                      key={`${rowIndex}-${index}`}
+                      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                      transition={{ 
+                        duration: 0.4,
+                        delay: (rowIndex * row.skills.length + index) * 0.05,
+                        type: "spring",
+                        stiffness: 100
+                      }}
+                      className="group"
+                      style={{
+                        marginLeft: index === 0 ? '0' : '-1.5rem',
+                        position: 'relative',
+                        width: '160px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <motion.div 
+                        className="relative w-32 h-36 bg-white/5 backdrop-blur-sm transition-all duration-300 overflow-hidden"
+                        style={{
+                          clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                        }}
+                        whileHover={{
+                          scale: 1.05,
+                          boxShadow: '0 0 20px rgba(var(--accent-rgb), 0.3)',
+                          transition: {
+                            duration: 0.3,
+                            type: "spring",
+                            stiffness: 300
+                          }
+                        }}
                       >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                        {/* Pulse effect */}
+                        <motion.div
+                          className="absolute inset-0 bg-accent/20"
+                          style={{
+                            clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                          }}
+                          animate={{
+                            scale: [1, 1.1, 1],
+                            opacity: [0, 0.5, 0]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        />
+
+                        {/* Gradient border effect */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-accent/50 via-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"
+                          style={{
+                            clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                          }}
+                        ></div>
+                        
+                        {/* Background with border */}
+                        <div className="absolute inset-[1px] bg-background/95 backdrop-blur-sm"
+                          style={{
+                            clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                          }}
+                        >
+                          {/* Enhanced background effects */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                          <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                          
+                          {/* Enhanced glow effect */}
+                          <div className="absolute -inset-1 bg-accent/20 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                          <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                          
+                          {/* Content */}
+                          <div className="relative h-full flex flex-col items-center justify-center p-3">
+                            <motion.div 
+                              className="text-2xl mb-2 text-accent"
+                              whileHover={{ 
+                                scale: 1.2,
+                                rotate: [0, -5, 5, -5, 0],
+                                transition: { 
+                                  duration: 0.5,
+                                  type: "spring",
+                                  stiffness: 200
+                                }
+                              }}
+                            >
+                              <skill.icon />
+                            </motion.div>
+                            <motion.span 
+                              className="text-[11px] text-white/80 text-center group-hover:text-white transition-colors duration-300 hidden md:block"
+                              whileHover={{ scale: 1.1 }}
+                            >
+                              {skill.name}
+                            </motion.span>
+                            <motion.span 
+                              className="text-[9px] text-accent/60 mt-1 group-hover:text-accent transition-colors duration-300 hidden md:block"
+                              whileHover={{ scale: 1.1 }}
+                            >
+                              {skill.category}
+                            </motion.span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  ))}
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
