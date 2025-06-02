@@ -18,12 +18,10 @@ const MobileNav = () => {
     { href: "#contact", label: "Contact" },
   ];
 
-  const handleLinkClick = (href) => {
+  const handleLinkClick = (e, href) => {
+    e.preventDefault();
     const element = document.getElementById(href.substring(1));
     if (element) {
-      // Prevent default behavior
-      event?.preventDefault();
-      
       // Get the element's position relative to the viewport
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - 80; // 80px offset for header
@@ -57,7 +55,7 @@ const MobileNav = () => {
           {navLinks.map((link) => (
             <button
               key={link.href}
-              onClick={() => handleLinkClick(link.href)}
+              onClick={(e) => handleLinkClick(e, link.href)}
               className={`text-sm font-medium ${
                 pathname === link.href
                   ? "text-accent"
