@@ -14,8 +14,16 @@ const Nav = () => {
       { href: "#contact", label: "Contact" },
    ];
 
+   const handleLinkClick = (e, href) => {
+      e.preventDefault();
+      const element = document.getElementById(href.substring(1));
+      if (element) {
+         element.scrollIntoView({ behavior: "smooth" });
+      }
+   };
+
    return (
-      <nav className="flex items-center gap-8">
+      <nav className="flex flex-col xl:flex-row items-center gap-4 xl:gap-8">
          {navLinks.map((link) => (
             <Link
                key={link.href}
@@ -25,16 +33,10 @@ const Nav = () => {
                      ? "text-accent"
                      : "text-white hover:text-accent"
                }`}
-               onClick={(e) => {
-                  e.preventDefault();
-                  const element = document.getElementById(link.href.substring(1));
-                  if (element) {
-                     element.scrollIntoView({ behavior: "smooth" });
-                  }
-               }}
+               onClick={(e) => handleLinkClick(e, link.href)}
             >
                {link.label}
-               </Link>
+            </Link>
          ))}
       </nav>
    );

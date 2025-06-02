@@ -1,13 +1,13 @@
 "use client";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import { CiMenuFries } from 'react-icons/ci';
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
+import Nav from "./Nav";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const MobileNav = () => {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const scrollPositionRef = useRef(0);
 
@@ -25,27 +25,6 @@ const MobileNav = () => {
       }, 300); // Match this with the Sheet animation duration
     }
     setOpen(newOpen);
-  };
-
-  const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#experience", label: "Work" },
-    { href: "#skills", label: "Skills" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
-  ];
-
-  const handleLinkClick = (href) => {
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-    
-    if (targetElement) {
-      document.documentElement.style.scrollBehavior = 'smooth';
-      targetElement.scrollIntoView();
-      setTimeout(() => {
-        document.documentElement.style.scrollBehavior = '';
-      }, 1000);
-    }
   };
 
   return (
@@ -68,22 +47,13 @@ const MobileNav = () => {
           </button>
         </div>
 
-        {/* Nav */}
-        <nav className="flex flex-col items-center gap-4">
-          {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => handleLinkClick(link.href)}
-              className={`text-sm font-medium ${
-                pathname === link.href
-                  ? "text-accent"
-                  : "text-white hover:text-accent"
-              }`}
-            >
-              {link.label}
-            </button>
-          ))}
-        </nav>
+        {/* Use the same Nav component as desktop */}
+        <div className="flex flex-col items-center gap-8">
+          <Nav />
+          <Link href="#contact">
+            <Button>Hire me</Button>
+          </Link>
+        </div>
       </SheetContent>
     </Sheet>
   );
