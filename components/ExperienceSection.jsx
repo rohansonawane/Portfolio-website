@@ -13,12 +13,12 @@ const ExperienceSection = () => {
       location: "Carson, CA",
       period: "Aug 2023 - May 2025",
       skills: [
-        { name: "Unity", icon: <FaUnity className="text-2xl" /> },
-        { name: "OpenAI", icon: <SiOpenai className="text-2xl" /> },
-        { name: "Python", icon: <FaPython className="text-2xl" /> },
-        { name: "TensorFlow", icon: <SiTensorflow className="text-2xl" /> },
-        { name: "React", icon: <FaReact className="text-2xl" /> },
-        { name: "Next.js", icon: <SiNextdotjs className="text-2xl" /> }
+        { name: "Unity", icon: <FaUnity key="unity" className="text-2xl" /> },
+        { name: "OpenAI", icon: <SiOpenai key="openai" className="text-2xl" /> },
+        { name: "Python", icon: <FaPython key="python" className="text-2xl" /> },
+        { name: "TensorFlow", icon: <SiTensorflow key="tensorflow" className="text-2xl" /> },
+        { name: "React", icon: <FaReact key="react" className="text-2xl" /> },
+        { name: "Next.js", icon: <SiNextdotjs key="next" className="text-2xl" /> }
       ],
       achievements: [
         "Developed immersive VR classroom with Unity & OpenAI, boosting engagement by 40%",
