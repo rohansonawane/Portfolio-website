@@ -33,14 +33,14 @@ const ExperienceSection = () => {
       location: "Mumbai, India",
       period: "Aug 2020 - Jul 2023",
       skills: [
-        { name: "React", icon: <FaReact className="text-2xl" /> },
-        { name: "Node.js", icon: <FaNodeJs className="text-2xl" /> },
-        { name: "TypeScript", icon: <SiTypescript className="text-2xl" /> },
-        { name: "AWS", icon: <FaAws className="text-2xl" /> },
-        { name: "PHP", icon: <FaPhp className="text-2xl" /> },
-        { name: "Docker", icon: <FaDocker className="text-2xl" /> },
-        { name: "Git", icon: <FaGitAlt className="text-2xl" /> },
-        { name: "MongoDB", icon: <SiMongodb className="text-2xl" /> }
+        { name: "React", icon: <FaReact key="react" className="text-2xl" /> },
+        { name: "Node.js", icon: <FaNodeJs key="node" className="text-2xl" /> },
+        { name: "TypeScript", icon: <SiTypescript key="typescript" className="text-2xl" /> },
+        { name: "AWS", icon: <FaAws key="aws" className="text-2xl" /> },
+        { name: "PHP", icon: <FaPhp key="php" className="text-2xl" /> },
+        { name: "Docker", icon: <FaDocker key="docker" className="text-2xl" /> },
+        { name: "Git", icon: <FaGitAlt key="git" className="text-2xl" /> },
+        { name: "MongoDB", icon: <SiMongodb key="mongodb" className="text-2xl" /> }
       ],
       achievements: [
         "Built 15+ full-stack apps improving UI responsiveness by 40%",
@@ -55,13 +55,13 @@ const ExperienceSection = () => {
       location: "Mumbai, India",
       period: "Jun 2016 - Sep 2020",
       skills: [
-        { name: "WordPress", icon: <FaWordpress className="text-2xl" /> },
-        { name: "Shopify", icon: <FaShopify className="text-2xl" /> },
-        { name: "TypeScript", icon: <SiTypescript className="text-2xl" /> },
-        { name: "AWS", icon: <FaAws className="text-2xl" /> },
-        { name: "PHP", icon: <FaPhp className="text-2xl" /> },
-        { name: "MySQL", icon: <SiMysql className="text-2xl" /> },
-        { name: "React", icon: <FaReact className="text-2xl" /> }
+        { name: "WordPress", icon: <FaWordpress key="wordpress" className="text-2xl" /> },
+        { name: "Shopify", icon: <FaShopify key="shopify" className="text-2xl" /> },
+        { name: "TypeScript", icon: <SiTypescript key="typescript" className="text-2xl" /> },
+        { name: "AWS", icon: <FaAws key="aws" className="text-2xl" /> },
+        { name: "PHP", icon: <FaPhp key="php" className="text-2xl" /> },
+        { name: "MySQL", icon: <SiMysql key="mysql" className="text-2xl" /> },
+        { name: "React", icon: <FaReact key="react" className="text-2xl" /> }
       ],
       achievements: [
         "Led 5-member team delivering 60+ web applications",

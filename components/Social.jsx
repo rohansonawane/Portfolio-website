@@ -4,9 +4,9 @@ import { FaGithub, FaLinkedinIn, FaYoutube, FaTwitter, FaLinktree} from "react-i
 import { SiLinktree } from "react-icons/si";
 
 const socials = [
-  {icon: <FaGithub />, path: "https://github.com/rohansonawane"},
-  {icon: <FaLinkedinIn />, path: "https://www.linkedin.com/in/rohanbsonawane/"},
-  {icon: <SiLinktree />, path: "https://linktr.ee/rsonawane"}
+  {icon: <FaGithub key="github" />, path: "https://github.com/rohansonawane"},
+  {icon: <FaLinkedinIn key="linkedin" />, path: "https://www.linkedin.com/in/rohanbsonawane/"},
+  {icon: <SiLinktree key="linktree" />, path: "https://linktr.ee/rsonawane"}
 ]
 
 const Social = ({containerStyles, iconStyles}) => {
