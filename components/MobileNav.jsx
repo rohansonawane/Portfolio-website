@@ -21,7 +21,19 @@ const MobileNav = () => {
   const handleLinkClick = (href) => {
     const element = document.getElementById(href.substring(1));
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      // Prevent default behavior
+      event?.preventDefault();
+      
+      // Get the element's position relative to the viewport
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - 80; // 80px offset for header
+
+      // Smooth scroll to the element
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      
       setOpen(false);
     }
   };
