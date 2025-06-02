@@ -100,7 +100,158 @@ const HoneycombSkills = () => {
 
       {/* Honeycomb grid container */}
       <div className="relative w-full px-4 md:px-8">
-        <div className="flex flex-col items-center w-full" style={{ gap: '0' }}>
+        {/* Mobile scroll container */}
+        <div className="md:hidden overflow-x-auto pb-4 -mx-4 px-4">
+          <div className="flex flex-col items-center min-w-max" style={{ gap: '0' }}>
+            {rowLayout.map((row, rowIndex) => (
+              <div 
+                key={rowIndex}
+                className="flex justify-center w-full"
+                style={{
+                  marginTop: rowIndex === 0 ? '0' : '-1.5rem',
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center'
+                }}
+              >
+                <div
+                  className="flex justify-center"
+                  style={{
+                    marginLeft: row.isEvenRow ? '0' : '-0.25rem',
+                    gap: '0',
+                    width: '100%',
+                    maxWidth: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}
+                >
+                  <div
+                    className="flex justify-center"
+                    style={{
+                      gap: '0',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      marginLeft: row.isLastRow && !row.isEvenRow ? '-0.25rem' : '0'
+                    }}
+                  >
+                    {row.skills.map((skill, index) => (
+                      <motion.div
+                        key={`${rowIndex}-${index}`}
+                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ 
+                          duration: 0.4,
+                          delay: (rowIndex * row.skills.length + index) * 0.05,
+                          type: "spring",
+                          stiffness: 100
+                        }}
+                        className="group"
+                        style={{
+                          marginLeft: index === 0 ? '0' : '-1.5rem',
+                          position: 'relative',
+                          width: '120px', // Smaller on mobile
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center'
+                        }}
+                      >
+                        <motion.div 
+                          className="relative w-24 h-28 bg-white/5 backdrop-blur-sm transition-all duration-300 overflow-hidden" // Smaller on mobile
+                          style={{
+                            clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                          }}
+                          whileHover={{
+                            scale: 1.05,
+                            boxShadow: '0 0 20px rgba(var(--accent-rgb), 0.3)',
+                            transition: {
+                              duration: 0.3,
+                              type: "spring",
+                              stiffness: 300
+                            }
+                          }}
+                        >
+                          {/* Pulse effect */}
+                          <motion.div
+                            className="absolute inset-0 bg-accent/20"
+                            style={{
+                              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                            }}
+                            animate={{
+                              scale: [1, 1.1, 1],
+                              opacity: [0, 0.5, 0]
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                          />
+
+                          {/* Gradient border effect */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-accent/50 via-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"
+                            style={{
+                              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                            }}
+                          ></div>
+                          
+                          {/* Background with border */}
+                          <div className="absolute inset-[1px] bg-background/95 backdrop-blur-sm"
+                            style={{
+                              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                            }}
+                          >
+                            {/* Enhanced background effects */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                            <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                            
+                            {/* Enhanced glow effect */}
+                            <div className="absolute -inset-1 bg-accent/20 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                            
+                            {/* Content */}
+                            <div className="relative h-full flex flex-col items-center justify-center p-2">
+                              <motion.div 
+                                className="text-xl mb-1 text-accent"
+                                whileHover={{ 
+                                  scale: 1.2,
+                                  rotate: [0, -5, 5, -5, 0],
+                                  transition: { 
+                                    duration: 0.5,
+                                    type: "spring",
+                                    stiffness: 200
+                                  }
+                                }}
+                              >
+                                <skill.icon />
+                              </motion.div>
+                              <motion.span 
+                                className="text-[10px] text-white/80 text-center group-hover:text-white transition-colors duration-300"
+                                whileHover={{ scale: 1.1 }}
+                              >
+                                {skill.name}
+                              </motion.span>
+                              <motion.span 
+                                className="text-[8px] text-accent/60 mt-0.5 group-hover:text-accent transition-colors duration-300"
+                                whileHover={{ scale: 1.1 }}
+                              >
+                                {skill.category}
+                              </motion.span>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop layout */}
+        <div className="hidden md:flex flex-col items-center w-full" style={{ gap: '0' }}>
           {rowLayout.map((row, rowIndex) => (
             <div 
               key={rowIndex}
@@ -225,13 +376,13 @@ const HoneycombSkills = () => {
                               <skill.icon />
                             </motion.div>
                             <motion.span 
-                              className="text-[11px] text-white/80 text-center group-hover:text-white transition-colors duration-300 hidden md:block"
+                              className="text-[11px] text-white/80 text-center group-hover:text-white transition-colors duration-300"
                               whileHover={{ scale: 1.1 }}
                             >
                               {skill.name}
                             </motion.span>
                             <motion.span 
-                              className="text-[9px] text-accent/60 mt-1 group-hover:text-accent transition-colors duration-300 hidden md:block"
+                              className="text-[9px] text-accent/60 mt-1 group-hover:text-accent transition-colors duration-300"
                               whileHover={{ scale: 1.1 }}
                             >
                               {skill.category}
