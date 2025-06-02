@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rohan Sonawane's Portfolio
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js 14, showcasing my work as a Full Stack Developer. The portfolio features smooth animations, interactive components, and a clean, professional design.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Modern Design**: Clean and professional UI with glass-morphism effects
+- **Responsive**: Fully responsive design that works on all devices
+- **Animations**: Smooth page transitions and component animations using Framer Motion
+- **Interactive Components**: 
+  - Animated statistics with CountUp
+  - Interactive project cards
+  - Honeycomb skills display
+  - Floating skills animation
+  - Stair transition effects
+- **Performance Optimized**: Fast loading times and optimized assets
+- **SEO Friendly**: Proper meta tags, OpenGraph, and Twitter card support
+- **Dark Mode**: Beautiful dark theme with accent colors
+- **Contact Integration**: Live chat support via TawkTo
+- **Analytics**: Google Analytics integration
+
+## 🛠️ Technologies Used
+
+- **Framework**: Next.js 14
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: React Icons
+- **UI Components**: Radix UI
+- **Analytics**: Google Tag Manager
+- **Chat**: TawkTo
+- **Deployment**: Vercel
+
+## 📁 Project Structure
+
+```
+portfolio/
+├── app/                    # Next.js app directory
+│   ├── layout.jsx         # Root layout with metadata
+│   ├── page.jsx           # Home page
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── AboutSection.jsx   # About section component
+│   ├── AnimatedText.jsx   # Animated text component
+│   ├── ContactSection.jsx # Contact form section
+│   ├── ExperienceSection.jsx # Experience timeline
+│   ├── FeaturedProjects.jsx  # Projects showcase
+│   ├── FloatingSkills.jsx    # Floating skills animation
+│   ├── Header.jsx         # Navigation header
+│   ├── HoneycombSkills.jsx   # Skills display
+│   ├── Stats.jsx         # Statistics with CountUp
+│   └── ...               # Other components
+├── public/               # Static assets
+│   ├── assets/          # Images and other assets
+│   └── favicon/         # Favicon files
+└── scripts/             # Utility scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Key Components
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Stats Component
+- Animated statistics with CountUp
+- Intersection Observer for scroll-based animations
+- Responsive grid layout
+- Shows experience, projects, technologies, and client satisfaction
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Featured Projects
+- Interactive project cards
+- Image optimization with Next.js Image
+- Technology tags and links
+- Smooth hover effects
 
-## Learn More
+### Skills Display
+- Honeycomb layout for skills
+- Interactive hover effects
+- Categorized skills display
+- Animated icons
 
-To learn more about Next.js, take a look at the following resources:
+### Contact Section
+- Modern contact form
+- Live chat integration
+- Social media links
+- Location information
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Clone the repository:
+```bash
+git clone https://github.com/rohansonawane/Portfolio.git
+```
 
-## Deploy on Vercel
+2. Install dependencies:
+```bash
+npm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📱 Responsive Design
+
+The portfolio is fully responsive and optimized for:
+- Mobile devices
+- Tablets
+- Laptops
+- Desktop screens
+- Large displays
+
+## 🎨 Customization
+
+To customize the portfolio:
+1. Update the content in the components
+2. Modify the color scheme in `globals.css`
+3. Add your own projects in `FeaturedProjects.jsx`
+4. Update the statistics in `Stats.jsx`
+
+## 🔧 Performance Optimizations
+
+- Image optimization with Next.js Image
+- Font optimization with next/font
+- Component lazy loading
+- Efficient animations
+- Proper meta tags for SEO
+- Optimized assets
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**Rohan Sonawane**
+- Portfolio: [rohansonawane.tech](https://rohansonawane.tech)
+- GitHub: [@rohansonawane](https://github.com/rohansonawane)
+- LinkedIn: [Rohan Sonawane](https://linkedin.com/in/rohansonawane)
+
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- Framer Motion for the animation library
+- Tailwind CSS for the styling framework
+- All the open-source contributors
