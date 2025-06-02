@@ -19,7 +19,7 @@ const Social = ({containerStyles, iconStyles}) => {
           className={iconStyles} 
           target="_blank"
         >
-          {item.icon}
+        {item.icon}
         </Link>
       ))}
     </div>

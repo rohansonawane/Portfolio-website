@@ -94,14 +94,14 @@ export default function RootLayout({ children }) {
       <GoogleTagManager gtmId="GTM-5727CZ8R" />
       <body className={jetbrainsMono.variable}>
         <ErrorBoundary>
-          <Header />
-          <StairTransition />
-          <PageTransition>
-            {children}
-          </PageTransition>
+        <Header />
+        <StairTransition />
+        <PageTransition>
+          {children}
+        </PageTransition>
         </ErrorBoundary>
         <TawkToChat />
-      </body>
+        </body>
     </html>
   );
 }
