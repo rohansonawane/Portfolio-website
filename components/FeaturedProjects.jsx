@@ -6,6 +6,7 @@ import { FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import { FaPython, FaJs, FaHtml5, FaCss3, FaPhp, FaBrain, FaChartLine, FaCode, FaServer, FaCloud, FaTools, FaDatabase } from "react-icons/fa";
 import { SiTensorflow, SiPytorch, SiScikitlearn, SiAframe, SiMysql, SiMapbox, SiPandas, SiNumpy, SiKeras, SiJupyter, SiReact, SiD3Dotjs } from "react-icons/si";
+import Link from "next/link";
 
 const projects = [
   {
