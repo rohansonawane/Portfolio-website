@@ -189,7 +189,7 @@ const FeaturedProjects = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((project, index) => (
           <motion.div
-            key={index}
+            key={`project-${index}`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -231,13 +231,15 @@ const FeaturedProjects = () => {
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.skills.map((skill, skillIndex) => (
                         <motion.span
-                          key={`skill-${skillIndex}`}
+                          key={`${project.title}-skill-${skillIndex}`}
                           initial={{ opacity: 0, scale: 0.8 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.3, delay: skillIndex * 0.1 }}
                           className="px-3 py-1 text-xs rounded-full backdrop-blur-xl bg-white/[0.02] border border-white/10 text-white/90 hover:bg-accent/20 transition-colors duration-300 flex items-center"
                         >
-                          <span className="text-accent mr-1">{project.icons[skillIndex].icon}</span> {skill}
+                          <span className="text-accent mr-1" key={`${project.title}-icon-${skillIndex}`}>
+                            {project.icons[skillIndex].icon}
+                          </span> {skill}
                         </motion.span>
                       ))}
                     </div>
@@ -318,13 +320,15 @@ const FeaturedProjects = () => {
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.skills.map((skill, skillIndex) => (
                         <motion.span
-                          key={`skill-${skillIndex}`}
+                          key={`${project.title}-skill-${skillIndex}`}
                           initial={{ opacity: 0, scale: 0.8 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.3, delay: skillIndex * 0.1 }}
                           className="px-3 py-1 text-xs rounded-full backdrop-blur-xl bg-white/[0.02] border border-white/10 text-white/90 hover:bg-accent/20 transition-colors duration-300 flex items-center"
                         >
-                          <span className="text-accent mr-1">{project.icons[skillIndex].icon}</span> {skill}
+                          <span className="text-accent mr-1" key={`${project.title}-icon-${skillIndex}`}>
+                            {project.icons[skillIndex].icon}
+                          </span> {skill}
                         </motion.span>
                       ))}
                     </div>

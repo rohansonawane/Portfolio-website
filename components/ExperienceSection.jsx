@@ -92,7 +92,7 @@ const ExperienceSection = () => {
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           {experiences.map((exp, index) => (
             <motion.div
-              key={index}
+              key={`exp-${index}`}
               initial={exp.animation}
               whileInView={{ x: 0, y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -122,13 +122,13 @@ const ExperienceSection = () => {
                 <div className="flex flex-wrap gap-3">
                   {exp.skills.map((skill, idx) => (
                     <motion.div
-                      key={idx}
+                      key={`${exp.title}-skill-${idx}`}
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
                       transition={{ duration: 0.3, delay: idx * 0.1 }}
                       className="flex items-center gap-2 bg-white/5 px-3 py-1 rounded-full text-accent hover:bg-accent/20 transition-colors duration-300"
                     >
-                      {skill.icon}
+                      <span key={`${exp.title}-icon-${idx}`}>{skill.icon}</span>
                       <span className="text-sm text-white/80">{skill.name}</span>
                     </motion.div>
                   ))}
@@ -140,7 +140,7 @@ const ExperienceSection = () => {
               <ul className="space-y-4">
                 {exp.achievements.map((achievement, idx) => (
                   <motion.li
-                    key={idx}
+                    key={`${exp.title}-achievement-${idx}`}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: idx * 0.1 }}
