@@ -14,7 +14,9 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["100","200","300","400","500","600","700","800"],
   variable: '--font-jetbrainsMono',
   display: 'swap',
-  preload: true
+  preload: true,
+  adjustFontFallback: true,
+  fallback: ['system-ui', 'arial']
  });
 
 export const viewport = {
