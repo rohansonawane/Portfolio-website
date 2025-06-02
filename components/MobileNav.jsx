@@ -19,11 +19,23 @@ const MobileNav = () => {
   ];
 
   const handleLinkClick = (href) => {
-    const element = document.getElementById(href.substring(1));
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setOpen(false);
-    }
+    // Close menu first
+    setOpen(false);
+    
+    // Small delay to ensure menu is closed before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(href.substring(1));
+      if (element) {
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }, 100);
   };
 
   return (
