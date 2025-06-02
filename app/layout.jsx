@@ -27,6 +27,7 @@ export const viewport = {
 };
 
 export const metadata = {
+  metadataBase: new URL('https://rohansonawane.tech/'),
   title: "Rohan Sonawane | Portfolio",
   description: "Full Stack Software Developer | AI / ML | Docker, CI/CD, Jenkins | PHP, Python, JavaScript (React, Node, Next) | WordPress | UI/UX Designer | Blender, Unity Developer | API Integration Specialist | Testing",
   keywords: ["Full Stack Developer", "Software Engineer", "Web Development", "UI/UX Design", "AI/ML", "React", "Next.js", "Node.js", "Python", "PHP"],

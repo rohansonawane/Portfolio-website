@@ -7,12 +7,12 @@ import {
   FaDatabase, FaServer, FaCloud, FaTools, FaCode, FaBrain, FaChartLine, FaLaravel, FaVuejs, FaSass, FaLess, FaBootstrap
 } from 'react-icons/fa';
 import { 
-  SiTypescript, SiCplusplus, SiCsharp, SiDotnet, SiMysql, SiPostgresql, 
+  SiTypescript, SiCplusplus, SiDotnet, SiMysql, SiPostgresql, 
   SiMongodb, SiRedis, SiAmazonaws, SiGooglecloud, SiJenkins, SiVercel, 
   SiKubernetes, SiTerraform, SiApachehadoop, SiApachespark, SiTensorflow, 
-  SiPytorch, SiScikitlearn, SiOpenai, SiPowerbi, SiGraphql, SiFigma, 
+  SiPytorch, SiScikitlearn, SiOpenai, SiGraphql, SiFigma, 
   SiTailwindcss, SiNextdotjs, SiAngular, SiFlask, SiDjango, SiExpress, 
-  SiBootstrap as SiBootstrapIcon, SiUnity, SiBlender, SiGo
+  SiBootstrap as SiBootstrapIcon, SiUnity, SiBlender, SiGo 
 } from 'react-icons/si';
 
 const skills = [
@@ -23,7 +23,7 @@ const skills = [
   { name: "PHP", icon: <FaPhp key="php" />, category: "Languages" },
   { name: "Java", icon: <FaJava key="java" />, category: "Languages" },
   { name: "C++", icon: <SiCplusplus key="cpp" />, category: "Languages" },
-  { name: "C#", icon: <SiCsharp key="csharp" />, category: "Languages" },
+  { name: "C#", icon: <SiDotnet key="csharp" />, category: "Languages" },
   { name: "React", icon: <FaReact key="react" />, category: "Frameworks" },
   { name: "Next.js", icon: <SiNextdotjs key="next" />, category: "Frameworks" },
   { name: "Angular", icon: <SiAngular key="angular" />, category: "Frameworks" },
@@ -49,7 +49,7 @@ const skills = [
   { name: "PostgreSQL", icon: <SiPostgresql key="postgres" />, category: "Database" },
   { name: "MongoDB", icon: <SiMongodb key="mongodb" />, category: "Database" },
   { name: "Redis", icon: <SiRedis key="redis" />, category: "Database" },
-  { name: "Power BI", icon: <SiPowerbi key="powerbi" />, category: "Tools" },
+  { name: "Power BI", icon: <FaChartLine key="powerbi" />, category: "Tools" },
   { name: "Laravel", icon: <FaLaravel key="laravel" />, category: "Backend" },
   { name: "Vue.js", icon: <FaVuejs key="vue" />, category: "Frontend" },
   { name: "Sass", icon: <FaSass key="sass" />, category: "Frontend" },
