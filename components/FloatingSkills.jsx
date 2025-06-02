@@ -34,7 +34,7 @@ const FloatingSkills = () => {
   ];
 
   return (
-    <div ref={containerRef} className="absolute inset-0 w-full h-full z-20 pointer-events-none">
+    <div ref={containerRef} className="absolute inset-0 w-full h-full z-20 pointer-events-none hidden">
       {/* Left Skills Box */}
       <motion.div
         style={{ y: y1, x: x1, opacity }}
