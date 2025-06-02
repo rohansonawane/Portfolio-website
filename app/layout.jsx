@@ -17,6 +17,15 @@ const jetbrainsMono = JetBrains_Mono({
   preload: true
  });
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: '#000000',
+  colorScheme: 'dark'
+};
+
 export const metadata = {
   title: "Rohan Sonawane | Portfolio",
   description: "Full Stack Software Developer | AI / ML | Docker, CI/CD, Jenkins | PHP, Python, JavaScript (React, Node, Next) | WordPress | UI/UX Designer | Blender, Unity Developer | API Integration Specialist | Testing",
@@ -58,14 +67,6 @@ export const metadata = {
     creator: "@rohansonawane",
     images: ['/assets/Portfolio-picture.png']
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false
-  },
-  themeColor: '#000000',
-  colorScheme: 'dark',
   verification: {
     google: 'your-google-site-verification',
   },
@@ -79,9 +80,6 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="color-scheme" content="dark" />
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
         <link rel="icon" href="/assets/favicon-16x16.png" type="image/png" sizes="16x16" />
         <link rel="icon" href="/assets/favicon-32x32.png" type="image/png" sizes="32x32" />
