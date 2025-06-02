@@ -4,26 +4,28 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from 'react-icons/ci';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const MobileNav = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollPositionRef = useRef(0);
 
   // Save scroll position when menu opens
-  useEffect(() => {
-    if (open) {
-      setScrollPosition(window.scrollY);
+  const handleOpenChange = (newOpen) => {
+    if (newOpen) {
+      scrollPositionRef.current = window.scrollY;
+    } else {
+      // Use setTimeout to ensure the scroll position is restored after the menu animation
+      setTimeout(() => {
+        window.scrollTo({
+          top: scrollPositionRef.current,
+          behavior: 'instant'
+        });
+      }, 300); // Match this with the Sheet animation duration
     }
-  }, [open]);
-
-  // Restore scroll position when menu closes
-  useEffect(() => {
-    if (!open) {
-      window.scrollTo(0, scrollPosition);
-    }
-  }, [open, scrollPosition]);
+    setOpen(newOpen);
+  };
 
   const navLinks = [
     { href: "#home", label: "Home" },
@@ -34,18 +36,12 @@ const MobileNav = () => {
   ];
 
   const handleLinkClick = (href) => {
-    // Use a direct anchor link approach
     const targetId = href.substring(1);
     const targetElement = document.getElementById(targetId);
     
     if (targetElement) {
-      // Add smooth scroll behavior to html
       document.documentElement.style.scrollBehavior = 'smooth';
-      
-      // Scroll to the element
       targetElement.scrollIntoView();
-      
-      // Remove smooth scroll behavior after scrolling
       setTimeout(() => {
         document.documentElement.style.scrollBehavior = '';
       }, 1000);
@@ -53,17 +49,23 @@ const MobileNav = () => {
   };
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet open={open} onOpenChange={handleOpenChange}>
       <SheetTrigger className="flex justify-center items-center">
         <CiMenuFries className="text-[32px] text-accent" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         <div className="mt-32 mb-40 text-center text-2xl">
-          <Link href="/">
-            <h1 className="text-4xl font-semibold">
-              Rohan<span className="text-accent">.</span>
-            </h1>
-          </Link>
+          <button 
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
+            }} 
+            className="text-4xl font-semibold"
+          >
+            Rohan<span className="text-accent">.</span>
+          </button>
         </div>
 
         {/* Nav */}
