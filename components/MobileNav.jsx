@@ -2,40 +2,36 @@
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CiMenuFries } from 'react-icons/ci';
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import Nav from "./Nav";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
-  const scrollPositionRef = useRef(0);
 
-  // Save scroll position when menu opens
-  const handleOpenChange = (newOpen) => {
-    if (newOpen) {
-      scrollPositionRef.current = window.scrollY;
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
     } else {
-      // Use requestAnimationFrame to ensure the scroll position is restored after the menu animation
-      requestAnimationFrame(() => {
-        window.scrollTo({
-          top: scrollPositionRef.current,
-          behavior: 'instant'
-        });
-      });
+      document.body.style.overflow = 'unset';
     }
-    setOpen(newOpen);
-  };
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [open]);
 
   return (
-    <Sheet open={open} onOpenChange={handleOpenChange}>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className="flex justify-center items-center">
         <CiMenuFries className="text-[32px] text-accent" />
       </SheetTrigger>
-      <SheetContent className="flex flex-col">
+      <SheetContent className="flex flex-col overflow-y-auto">
         <div className="mt-32 mb-40 text-center text-2xl">
           <button 
             onClick={() => {
+              setOpen(false);
               window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
@@ -50,7 +46,7 @@ const MobileNav = () => {
         {/* Use the same Nav component as desktop */}
         <div className="flex flex-col items-center gap-8">
           <Nav />
-          <Link href="#contact">
+          <Link href="#contact" onClick={() => setOpen(false)}>
             <Button>Hire me</Button>
           </Link>
         </div>
