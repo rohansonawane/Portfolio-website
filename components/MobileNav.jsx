@@ -32,7 +32,10 @@ const MobileNav = () => {
         behavior: "smooth"
       });
       
-      setOpen(false);
+      // Close menu after scroll animation completes
+      setTimeout(() => {
+        setOpen(false);
+      }, 800); // Wait for scroll animation to complete
     }
   };
 
