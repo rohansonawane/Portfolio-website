@@ -10,6 +10,7 @@ import Link from "next/link";
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
   const scrollPositionRef = useRef(0);
+  const isClosingRef = useRef(false);
 
   // Handle menu open/close
   const handleOpenChange = (newOpen) => {
@@ -17,15 +18,21 @@ const MobileNav = () => {
       // Save scroll position when opening
       scrollPositionRef.current = window.scrollY;
       document.body.style.overflow = 'hidden';
+      isClosingRef.current = false;
     } else {
-      // Restore scroll position when closing
+      // Mark as closing to prevent scroll jumps
+      isClosingRef.current = true;
       document.body.style.overflow = 'unset';
+      
       // Use requestAnimationFrame to ensure the scroll position is restored after the menu animation
       requestAnimationFrame(() => {
-        window.scrollTo({
-          top: scrollPositionRef.current,
-          behavior: 'instant'
-        });
+        if (isClosingRef.current) {
+          window.scrollTo({
+            top: scrollPositionRef.current,
+            behavior: 'instant'
+          });
+          isClosingRef.current = false;
+        }
       });
     }
     setOpen(newOpen);
@@ -35,6 +42,7 @@ const MobileNav = () => {
   useEffect(() => {
     return () => {
       document.body.style.overflow = 'unset';
+      isClosingRef.current = false;
     };
   }, []);
 
