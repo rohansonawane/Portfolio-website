@@ -84,8 +84,8 @@ const HoneycombSkills = () => {
 
   return (
     <div className="relative w-full py-8">
-      {/* Heading and Description */}
-      <div className="text-center mb-12">
+      {/* Heading and Description - Hidden on mobile */}
+      <div className="text-center mb-12 hidden md:block">
         <h2 className="text-4xl font-bold mb-4 text-white">
           Skills & Expertise
         </h2>
@@ -94,12 +94,12 @@ const HoneycombSkills = () => {
         </p>
       </div>
 
-      {/* Enhanced fade effect on sides */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background via-background/95 to-transparent z-10"></div>
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background/95 to-transparent z-10"></div>
+      {/* Enhanced fade effect on sides - Hidden on mobile */}
+      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background via-background/95 to-transparent z-10 hidden md:block"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background/95 to-transparent z-10 hidden md:block"></div>
 
       {/* Honeycomb grid container */}
-      <div className="relative w-full px-8">
+      <div className="relative w-full px-4 md:px-8">
         <div className="flex flex-col items-center w-full" style={{ gap: '0' }}>
           {rowLayout.map((row, rowIndex) => (
             <div 
@@ -225,13 +225,13 @@ const HoneycombSkills = () => {
                               {skill.icon}
                             </motion.div>
                             <motion.span 
-                              className="text-[11px] text-white/80 text-center group-hover:text-white transition-colors duration-300"
+                              className="text-[11px] text-white/80 text-center group-hover:text-white transition-colors duration-300 hidden md:block"
                               whileHover={{ scale: 1.1 }}
                             >
                               {skill.name}
                             </motion.span>
                             <motion.span 
-                              className="text-[9px] text-accent/60 mt-1 group-hover:text-accent transition-colors duration-300"
+                              className="text-[9px] text-accent/60 mt-1 group-hover:text-accent transition-colors duration-300 hidden md:block"
                               whileHover={{ scale: 1.1 }}
                             >
                               {skill.category}

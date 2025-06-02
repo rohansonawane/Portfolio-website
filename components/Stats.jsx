@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaCode, FaProjectDiagram, FaUsers, FaAward, FaGraduationCap, FaLaptopCode, FaChartLine, FaStar } from "react-icons/fa";
+import { FaCode, FaProjectDiagram, FaStar, FaLaptopCode } from "react-icons/fa";
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 
@@ -28,25 +28,11 @@ const stats = [
     description: "Across Various Domains"
   },
   {
-    id: 'clients',
-    number: "50+",
-    text: "Happy Clients",
-    icon: <FaUsers className="text-2xl text-accent mb-2" />,
-    description: "Satisfied Customers"
-  },
-  {
     id: 'technologies',
-    number: "15+",
+    number: "30+",
     text: "Technologies",
     icon: <FaLaptopCode className="text-2xl text-accent mb-2" />,
     description: "Mastered"
-  },
-  {
-    id: 'certifications',
-    number: "5+",
-    text: "Certifications",
-    icon: <FaAward className="text-2xl text-accent mb-2" />,
-    description: "Professional"
   }
 ];
 
@@ -57,7 +43,7 @@ const Stats = () => {
   });
 
   return (
-    <div ref={ref} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-[1400px] mx-auto xl:mx-0 mt-8">
+    <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-[1400px] mx-auto xl:mx-0 mt-8">
       {stats.map((stat) => (
         <motion.div
           key={stat.id}

@@ -1,62 +1,64 @@
 "use client";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import {usePathname} from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import {CiMenuFries, ciMenuFries} from 'react-icons/ci';
+import { CiMenuFries } from 'react-icons/ci';
+import { useState } from "react";
 
 const MobileNav = () => {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
-   const navLinks = [
-      { href: "#home", label: "Home" },
-      { href: "#experience", label: "Work" },
-      { href: "#skills", label: "Skills" },
-      { href: "#projects", label: "Projects" },
-      { href: "#contact", label: "Contact" },
-   ];
+  const navLinks = [
+    { href: "#home", label: "Home" },
+    { href: "#experience", label: "Work" },
+    { href: "#skills", label: "Skills" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
+  ];
 
-   return (
-   <Sheet>
+  const handleLinkClick = (href) => {
+    const element = document.getElementById(href.substring(1));
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setOpen(false);
+    }
+  };
+
+  return (
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className="flex justify-center items-center">
-         <CiMenuFries className="text-[32px] text-accent" />
+        <CiMenuFries className="text-[32px] text-accent" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">
-         <div className="mt-32 mb-40 text-center text-2xl">
-            <Link href="/">
-               <h1 className="text-4xl font-semibold">
-                  Rohan<span className="text-accent">.</span>
-               </h1>
-            </Link>
-         </div>
+        <div className="mt-32 mb-40 text-center text-2xl">
+          <Link href="/">
+            <h1 className="text-4xl font-semibold">
+              Rohan<span className="text-accent">.</span>
+            </h1>
+          </Link>
+        </div>
 
-         {/* Nav */}
-         
-            <nav className="flex flex-col items-center gap-4">
-               {navLinks.map((link) => (
-                  <Link
-                     key={link.href}
-                     href={link.href}
-                     className={`text-sm font-medium ${
-                        pathname === link.href
-                           ? "text-accent"
-                           : "text-white hover:text-accent"
-                     }`}
-                     onClick={(e) => {
-                        e.preventDefault();
-                        const element = document.getElementById(link.href.substring(1));
-                        if (element) {
-                           element.scrollIntoView({ behavior: "smooth" });
-                        }
-                     }}
-                  >
-                     {link.label}
-               </Link>
-               ))}
-         </nav>
+        {/* Nav */}
+        <nav className="flex flex-col items-center gap-4">
+          {navLinks.map((link) => (
+            <button
+              key={link.href}
+              onClick={() => handleLinkClick(link.href)}
+              className={`text-sm font-medium ${
+                pathname === link.href
+                  ? "text-accent"
+                  : "text-white hover:text-accent"
+              }`}
+            >
+              {link.label}
+            </button>
+          ))}
+        </nav>
       </SheetContent>
-   </Sheet>
-   );
-}
+    </Sheet>
+  );
+};
 
 export default MobileNav;

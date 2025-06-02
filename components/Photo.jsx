@@ -8,18 +8,19 @@ const Photo = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full relative flex justify-center items-center">
       {/* Image */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 0.4, ease: 'easeIn' }}
+        className="relative"
       >
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.4, duration: 0.4, ease: 'easeInOut' }}
-          className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] absolute"
+          className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] relative"
         >
           <Image
             src="/assets/Portfolio-picture.png"
@@ -41,7 +42,7 @@ const Photo = () => {
         </motion.div>
         {/* Circle */}
         <motion.svg
-          className="w-[300px] xl:w-[506px] h-[300px] xl:h-[506px]"
+          className="w-[300px] xl:w-[506px] h-[300px] xl:h-[506px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           fill="transparent"
           viewBox="0 0 506 506"
           xmlns="http://www.w3.org/2000/svg"

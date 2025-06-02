@@ -126,6 +126,7 @@ const ProjectCard = ({ project }) => {
               key={`tag-${index}`}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
               className="px-3 py-1 text-sm bg-accent/10 text-accent rounded-full"
             >
@@ -139,6 +140,7 @@ const ProjectCard = ({ project }) => {
               key={`skill-${index}`}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
               className="px-3 py-1 text-sm bg-white/5 text-white/80 rounded-full"
             >
@@ -192,6 +194,7 @@ const FeaturedProjects = () => {
             key={`project-${index}`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className={`group relative overflow-hidden rounded-xl backdrop-blur-xl bg-white/[0.02] border border-white/10 hover:border-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/20
               ${project.size === 'large' ? 'md:col-span-2 lg:col-span-2' : ''}
