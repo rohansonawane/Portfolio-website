@@ -19,9 +19,6 @@ const MobileNav = () => {
   ];
 
   const handleLinkClick = (href) => {
-    // Close the menu
-    setOpen(false);
-    
     // Use a direct anchor link approach
     const targetId = href.substring(1);
     const targetElement = document.getElementById(targetId);
