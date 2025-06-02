@@ -16,13 +16,13 @@ const MobileNav = () => {
     if (newOpen) {
       scrollPositionRef.current = window.scrollY;
     } else {
-      // Use setTimeout to ensure the scroll position is restored after the menu animation
-      setTimeout(() => {
+      // Use requestAnimationFrame to ensure the scroll position is restored after the menu animation
+      requestAnimationFrame(() => {
         window.scrollTo({
           top: scrollPositionRef.current,
           behavior: 'instant'
         });
-      }, 300); // Match this with the Sheet animation duration
+      });
     }
     setOpen(newOpen);
   };
