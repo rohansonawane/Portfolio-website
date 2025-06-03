@@ -43,7 +43,7 @@ const Nav = () => {
                onClick={(e) => handleLinkClick(e, link.href)}
             >
                {link.label}
-            </Link>
+               </Link>
          ))}
       </nav>
    );
