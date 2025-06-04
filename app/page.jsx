@@ -102,12 +102,18 @@ const Home = () => {
                   transition={{ delay: 0.5 }}
                   className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8"
                 >
-                  <Link href="/assets/Rohan_Sonawane_Resume.pdf" target="_blank" className="w-full sm:w-auto">
+                  <Link 
+                    href="/assets/Rohan_Sonawane_Resume.pdf" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    download="Rohan_Sonawane_Resume.pdf"
+                    className="w-full sm:w-auto"
+                  >
                     <Button download variant="outline" size="lg" className="uppercase flex items-center gap-2 hover:scale-105 transition-transform w-full sm:w-auto">
                 <span>Download Resume</span>
                 <FiDownload className="text-xl" />
               </Button>
-              </Link>
+                  </Link>
                   <div className="w-full sm:w-auto">
                     <Social containerStyles="flex gap-4 sm:gap-6 justify-center sm:justify-start" iconStyles="w-8 h-8 sm:w-9 sm:h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500" />
               </div>
