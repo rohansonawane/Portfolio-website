@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google'
+import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -11,11 +11,21 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
 
+const poppins = Poppins({ 
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+  preload: true,
+  adjustFontFallback: true,
+  fallback: ['system-ui', 'arial']
+})
+
 const inter = Inter({ 
   subsets: ['latin'],
   display: 'swap',
-  preload: true,
   variable: '--font-inter',
+  preload: true,
   adjustFontFallback: true,
   fallback: ['system-ui', 'arial']
 })
@@ -77,7 +87,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -105,7 +115,7 @@ export default function RootLayout({ children }) {
           src="https://www.googletagmanager.com/gtm.js?id=GTM-5727CZ8R"
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${poppins.className} antialiased`}>
         <ErrorBoundary>
           <Header />
           <StairTransition />
