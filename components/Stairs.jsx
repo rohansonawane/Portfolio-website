@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 // variants
 const stairAnimation = {
   initial: {
-    top: "0%",
+    y: "0%",
   },
   animate: {
-    top: "100%",
+    y: "100%",
   },
   exit: {
-    top: ["100%", "0%"],
+    y: ["100%", "0%"],
   },
 };
 
@@ -36,7 +36,11 @@ const Stairs = () => {
             ease: "easeInOut",
             delay: reverseIndex(index) * 0.1,
           }}
-          className="h-full w-full bg-accent relative"
+          className="h-full w-full bg-accent absolute inset-0"
+          style={{
+            transformOrigin: "top",
+            willChange: "transform"
+          }}
         />
       ))}
     </>
