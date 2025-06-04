@@ -87,7 +87,7 @@ export default function RootLayout({ children }) {
         <meta httpEquiv="x-dns-prefetch-control" content="on" />
         <Script
           id="gtm-script"
-          strategy="lazyOnload"
+          strategy="worker"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -101,7 +101,7 @@ export default function RootLayout({ children }) {
         />
         <Script
           id="gtm-load"
-          strategy="lazyOnload"
+          strategy="worker"
           src="https://www.googletagmanager.com/gtm.js?id=GTM-5727CZ8R"
         />
       </head>
