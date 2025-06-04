@@ -1,5 +1,7 @@
-import { JetBrains_Mono } from "next/font/google";
-import "./globals.css";
+import { Inter } from 'next/font/google'
+import './globals.css'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import TawkToChat from "@/components/TawkToChat";
 import { GoogleTagManager } from '@next/third-parties/google'
 
@@ -9,92 +11,82 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
 
-const jetbrainsMono = JetBrains_Mono({ 
-  subsets: ["latin"], 
-  weight: ["100","200","300","400","500","600","700","800"],
-  variable: '--font-jetbrainsMono',
+const inter = Inter({ 
+  subsets: ['latin'],
   display: 'swap',
   preload: true,
-  adjustFontFallback: true,
-  fallback: ['system-ui', 'arial']
- });
-
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  themeColor: '#000000',
-  colorScheme: 'dark'
-};
+  variable: '--font-inter'
+})
 
 export const metadata = {
-  metadataBase: new URL('https://rohansonawane.tech/'),
-  title: "Rohan Sonawane | Portfolio",
-  description: "Full Stack Software Developer | AI / ML | Docker, CI/CD, Jenkins | PHP, Python, JavaScript (React, Node, Next) | WordPress | UI/UX Designer | Blender, Unity Developer | API Integration Specialist | Testing",
-  keywords: ["Full Stack Developer", "Software Engineer", "Web Development", "UI/UX Design", "AI/ML", "React", "Next.js", "Node.js", "Python", "PHP"],
-  authors: [{ name: "Rohan Sonawane" }],
-  creator: "Rohan Sonawane",
-  publisher: "Rohan Sonawane",
-  robots: "index, follow",
-  icons: {
-    icon: '/assets/favicon.ico',
-    shortcut: '/assets/favicon.ico',
-    apple: '/assets/apple-touch-icon.png',
-    other: {
-      rel: 'apple-touch-icon-precomposed',
-      url: '/assets/apple-touch-icon.png',
-    },
+  title: 'Rohan Sonawane | Full Stack Developer',
+  description: 'Full Stack Developer specializing in React, Next.js, and Node.js. Building modern web applications with a focus on performance and user experience.',
+  keywords: 'Full Stack Developer, React, Next.js, Node.js, Web Development',
+  authors: [{ name: 'Rohan Sonawane' }],
+  creator: 'Rohan Sonawane',
+  publisher: 'Rohan Sonawane',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
-  manifest: '/site.webmanifest',
+  metadataBase: new URL('https://rohansonawane.tech'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://rohansonawane.tech",
-    title: "Rohan Sonawane | Portfolio",
-    description: "Full Stack Software Developer | AI / ML | Docker, CI/CD, Jenkins | PHP, Python, JavaScript (React, Node, Next) | WordPress | UI/UX Designer | Blender, Unity Developer | API Integration Specialist | Testing",
-    siteName: "Rohan Sonawane Portfolio",
+    title: 'Rohan Sonawane | Full Stack Developer',
+    description: 'Full Stack Developer specializing in React, Next.js, and Node.js. Building modern web applications with a focus on performance and user experience.',
+    url: 'https://rohansonawane.tech',
+    siteName: 'Rohan Sonawane Portfolio',
     images: [
       {
-        url: '/assets/Portfolio-picture.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Rohan Sonawane Portfolio Preview'
-      }
-    ]
+        alt: 'Rohan Sonawane Portfolio',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Rohan Sonawane | Portfolio",
-    description: "Full Stack Software Developer | AI / ML | Docker, CI/CD, Jenkins | PHP, Python, JavaScript (React, Node, Next) | WordPress | UI/UX Designer | Blender, Unity Developer | API Integration Specialist | Testing",
-    creator: "@rohansonawane",
-    images: ['/assets/Portfolio-picture.png']
+    card: 'summary_large_image',
+    title: 'Rohan Sonawane | Full Stack Developer',
+    description: 'Full Stack Developer specializing in React, Next.js, and Node.js. Building modern web applications with a focus on performance and user experience.',
+    images: ['/og-image.png'],
+    creator: '@rohansonawane',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   verification: {
     google: 'your-google-site-verification',
   },
-  alternates: {
-    canonical: 'https://rohansonawane.tech'
-  }
-};
+}
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={inter.variable}>
       <head>
-        <meta charSet="utf-8" />
-        <link rel="icon" href="/assets/favicon.ico" sizes="any" />
-        <link rel="icon" href="/assets/favicon-16x16.png" type="image/png" sizes="16x16" />
-        <link rel="icon" href="/assets/favicon-32x32.png" type="image/png" sizes="32x32" />
-        <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta httpEquiv="x-dns-prefetch-control" content="on" />
       </head>
       <GoogleTagManager gtmId="GTM-5727CZ8R" />
-      <body className={jetbrainsMono.variable}>
+      <body className={inter.className}>
         <ErrorBoundary>
         <Header />
         <StairTransition />
@@ -103,7 +95,9 @@ export default function RootLayout({ children }) {
         </PageTransition>
         </ErrorBoundary>
         <TawkToChat />
-        </body>
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
-  );
+  )
 }
