@@ -1,4 +1,4 @@
-import { Inter, Poppins } from 'next/font/google'
+import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -11,23 +11,13 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
 
-const poppins = Poppins({ 
-  weight: ['400', '500', '600', '700'],
+const jetbrainsMono = JetBrains_Mono({ 
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-poppins',
+  variable: '--font-jetbrainsMono',
   preload: true,
   adjustFontFallback: true,
-  fallback: ['system-ui', 'arial']
-})
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-  preload: true,
-  adjustFontFallback: true,
-  fallback: ['system-ui', 'arial']
+  fallback: ['system-ui', 'monospace']
 })
 
 export const metadata = {
@@ -87,7 +77,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
+    <html lang="en" className={jetbrainsMono.variable}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -115,7 +105,7 @@ export default function RootLayout({ children }) {
           src="https://www.googletagmanager.com/gtm.js?id=GTM-5727CZ8R"
         />
       </head>
-      <body className={`${poppins.className} antialiased`}>
+      <body className={`${jetbrainsMono.className} antialiased`}>
         <ErrorBoundary>
           <Header />
           <StairTransition />
