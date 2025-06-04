@@ -15,12 +15,14 @@ const Photo = () => {
       className="relative w-[300px] h-[300px] sm:w-[350px] sm:h-[350px]"
     >
       <Image
-        src="/assets/profile.png"
+        src="/assets/Portfolio-picture.png"
         alt="Rohan Sonawane"
         fill
         priority
         sizes="(max-width: 640px) 300px, 350px"
-        className="object-contain rounded-full transition-opacity duration-300"
+        className={`object-contain rounded-full transition-opacity duration-300 ${
+          isLoading ? 'opacity-0' : 'opacity-100'
+        }`}
         quality={90}
         loading="eager"
         onLoad={() => setIsLoading(false)}
